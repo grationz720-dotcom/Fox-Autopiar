@@ -1,3 +1,6 @@
 dockerfile
 docker.yml
 src/config/.env
+.vkbottle
+**/__pycache__/
+*.py[cod]

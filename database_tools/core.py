@@ -28,3 +28,27 @@ async def init_db() -> None:
 async def get_session() -> AsyncGenerator[AsyncSession, None]:
     async with async_session_maker() as session:
         yield session
+
+
+from datetime import datetime, timezone
+from typing import Optional
+from sqlmodel import Field, SQLModel
+
+class BaseModel(SQLModel):
+
+    id: Optional[int] = Field(
+        default=None,
+        primary_key=True,
+        index=True,
+        description="Уникальный идентификатор записи",
+    )
+
+    created_at: datetime = Field(
+        default_factory=lambda: datetime.now(timezone.utc),
+        description="Дата и время создания записи (UTC)",
+    )
+
+    updated_at: datetime = Field(
+        default_factory=lambda: datetime.now(timezone.utc),
+        description="Дата и время последнего обновления записи (UTC)",
+    )
