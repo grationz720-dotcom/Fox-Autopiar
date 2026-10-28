@@ -8,5 +8,5 @@ menu_keyboard = (
     Keyboard(one_time=False)
     .add(Text('Подать заявку на пиар'), color=KeyboardButtonColor.SECONDARY)
     .row()
-    .add(OpenLink(link=os.environ.get('superuser_url', 'http://www.google.com/404'), label=('Обратиться к создателю')), color=KeyboardButtonColor.SECONDARY)
+    .add(OpenLink(link=os.environ.get('superuser_url', 'https://vk.ru/@foxpiarbot-stranica-ne-naidena'), label=('Обратиться к создателю')), color=KeyboardButtonColor.SECONDARY)
 ).get_json()

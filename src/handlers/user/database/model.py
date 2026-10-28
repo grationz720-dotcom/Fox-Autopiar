@@ -4,7 +4,9 @@ from typing import Literal
 
 UserRole = Literal["admin", "moderator", "user", "guest"]
 
-class User(BaseModel):
+class User(BaseModel, table=True):
+    __tablename__ = 'User'
+
     vk_id: int = Field(
         primary_key=True,
         unique=True,
