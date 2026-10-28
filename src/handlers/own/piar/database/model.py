@@ -9,6 +9,10 @@ class AutoSend(BaseModel, table=True):
         unique=True,
         description='ID для конкретного цикла авто-рассылки.'
     )
+    vk_id: int = Field(
+        index=True,
+        description='ID конкретного пользователя введящего рассылку.'
+    )
     text: str = Field(
         unique=True,
         description='Текст для авто-рассылки.'

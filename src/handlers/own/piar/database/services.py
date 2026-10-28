@@ -4,7 +4,7 @@ from sqlmodel import select
 from sqlalchemy.exc import IntegrityError
 from database_tools.core import async_session_maker
 
-async def create_autosend(text: str, for_time: int):
+async def create_autosend(vk_id: int, text: str, for_time: int):
     if for_time >= 18000 or for_time < 300:
         for_time = 1800
 
@@ -12,7 +12,7 @@ async def create_autosend(text: str, for_time: int):
         text = text[:4092] + '...'
 
     async with async_session_maker() as session:
-        new_send = AutoSend(text=text, for_time=for_time, waiting_for_decision=True, decision_text='Не определено')
+        new_send = AutoSend(vk_id=vk_id, text=text, for_time=for_time, waiting_for_decision=True, decision_text='Не определено')
 
         session.add(new_send)
         await session.commit()
